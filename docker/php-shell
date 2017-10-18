@@ -1,0 +1,5 @@
+#!/bin/bash
+COMPOSE_FILE="docker-compose.yml"
+
+cd "${BASH_SOURCE[0]%/*}/../"
+docker-compose -f $COMPOSE_FILE exec --user www-data php /bin/bash

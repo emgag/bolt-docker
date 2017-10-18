@@ -1,0 +1,6 @@
+#!/bin/bash
+COMPOSE_FILE="docker-compose.yml"
+
+cd "${BASH_SOURCE[0]%/*}/../"
+docker-compose -f $COMPOSE_FILE exec --user www-data php \
+    /bin/bash -c 'cd /srv/app; rm -vrf vendor node_modules app/cache/*; composer clear-cache; composer install; app/nut extensions:setup; app/nut extensions:dumpautoload'

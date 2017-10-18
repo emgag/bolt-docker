@@ -1,0 +1,36 @@
+version: '2'
+services:
+  web:
+    build: ./docker/nginx
+    volumes:
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+      - .:/srv/app
+    ports:
+      - "80:80"
+    depends_on:
+      - php
+  php:
+    build: ./docker/php
+    volumes:
+      - .:/srv/app
+      - /srv/app/app/cache
+    depends_on:
+      - mysql
+      - redis
+  mysql:
+    build: ./docker/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bolt
+      MYSQL_USER: bolt
+      MYSQL_PASSWORD: bolt
+    ports:
+      - "3306:3306"
+  mail:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+  redis:
+    image: redis:4
+
