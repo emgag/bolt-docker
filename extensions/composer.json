@@ -25,6 +25,13 @@
         "bolt": {
             "type": "composer",
             "url": "https://market.bolt.cm/satis/"
+        },
+        "local": {
+            "type": "path",
+            "url": "/srv/extensions/*",
+            "options": {
+                "symlink": true
+            }
         }
     },
     "scripts": {
