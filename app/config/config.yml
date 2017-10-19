@@ -70,7 +70,7 @@ cron_hour: 3
 # canonical, so it's clear which is the primary address of the site.
 #
 # If you include `https://`, it will be included in the canonical urls.
-#canonical: example.org
+canonical: http://localhost
 
 # Bolt can insert a <link rel="shortcut icon"> for all pages on the site.
 
